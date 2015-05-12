@@ -1,0 +1,29 @@
+{
+  "name": "js-validate",
+  "version": "0.0.1",
+  "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
+  "main": "validate.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kshunz/js-validate.git"
+  },
+  "keywords": [
+    "javascript",
+    "validator",
+    "validate",
+    "data",
+    "types",
+    "form"
+  ],
+  "author": "K. Shunz <dwayneford@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kshunz/js-validate/issues"
+  },
+  "devDependencies": {
+    "bower": "~1.4.1"
+  }
+}

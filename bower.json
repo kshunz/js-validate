@@ -1,0 +1,30 @@
+{
+  "name": "js-validate",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kshunz/js-validate",
+  "authors": [
+    "K. Shunz <code@kshunz.com>",
+    "Dwayne Ford <dwayneford@gmail.com>"
+  ],
+  "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
+  "main": "validate.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "javascript",
+    "validator",
+    "validate",
+    "data",
+    "types",
+    "form"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

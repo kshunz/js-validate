@@ -1,5 +1,6 @@
 module.exports = function() {
-
+  "use strict";
+  
   var _ = require('lodash');
 
   return {

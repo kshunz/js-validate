@@ -1,4 +1,6 @@
 module.exports = function(input, rule) {
+  "use strict";
+  
   input = input || null;
   rule = rule || null;
 

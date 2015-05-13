@@ -1,4 +1,6 @@
 module.exports = function() {
+  "use strict";
+  
   var rules = require('./rules/rules');
   var validate = require('./validate/validate');
 

@@ -1,4 +1,6 @@
 describe('RULES module', function() {
+  "use strict";
+  
   var rules = require('../../src/rules/rules');
 
   it('should have SETS of rules', function() {

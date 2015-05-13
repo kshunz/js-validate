@@ -1,4 +1,6 @@
 describe('JS-VALIDATE CORE', function() {
+  "use strict";
+
   var validator = require('../src/js-validate');
 
   it('should be a object', function() {
@@ -25,7 +27,8 @@ describe('JS-VALIDATE CORE', function() {
 
   describe('VALIDATOR module', function() {
     //Covers src/validate/validate
-    v = require('../src/js-validate');
+    var v = require('../src/js-validate');
+    
     v.rules.add('minLen5', function(input) {
       return input.length > 4;
     });

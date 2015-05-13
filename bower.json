@@ -7,7 +7,7 @@
     "Dwayne Ford <dwayneford@gmail.com>"
   ],
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
-  "main": "validate.js",
+  "main": "js-validate.js",
   "moduleType": [
     "node"
   ],

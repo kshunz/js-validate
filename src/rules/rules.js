@@ -1,11 +1,11 @@
 module.exports = function() {
   "use strict";
-  
-  var _ = require('lodash');
+
+  var isFunc = require('../util/is_func');
 
   return {
     add: function(rule, validator) {
-      if(_.isFunction(validator)) {
+      if(isFunc(validator)) {
         this.sets[rule] = validator;
       }
     },

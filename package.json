@@ -1,10 +1,11 @@
 {
   "name": "js-validate",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "js-validate.js",
   "scripts": {
-    "test": "gulp test"
+    "start": "npm install && gulp && gulp package-min",
+    "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
     "types",
     "form"
   ],
-  "author": "K. Shunz <dwayneford@gmail.com>",
+  "author": "K. Shunz <code@kshunz.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kshunz/js-validate/issues"
@@ -27,9 +28,9 @@
     "bower": "~1.4.1",
     "chai": "~2.3.0",
     "gulp": "~3.8.11",
-    "gulp-mocha": "~2.0.1"
-  },
-  "dependencies": {
-    "lodash": "~3.8.0"
+    "gulp-browserify": "^0.5.1",
+    "gulp-mocha": "~2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.2.0"
   }
 }

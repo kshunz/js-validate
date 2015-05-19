@@ -1,3 +1,10 @@
+# No dotfiles
+.*
+# Dotfile exclusions
+!.npmrc
+!.bowerrc
+!.gitignore
+
 # Logs
 logs
 *.log

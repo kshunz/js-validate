@@ -3,7 +3,7 @@ describe('JS-VALIDATE CORE', function() {
 
   var validator = require('../src/js-validate');
 
-  it('should be a object', function() {
+  it('should be an object', function() {
     expect(validator).to.be.an('object');
   });
   it('should have a RULES object', function() {
@@ -14,7 +14,7 @@ describe('JS-VALIDATE CORE', function() {
     expect(validator.hasOwnProperty('validate')).to.be.true;
     expect(validator.validate).to.be.a('function');
   });
-  it('should have alidate alias', function() {
+  it('should have an alidate alias', function() {
     expect(validator.hasOwnProperty('alidate')).to.be.true;
     expect(validator.alidate).to.be.a('function');
   });

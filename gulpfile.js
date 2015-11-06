@@ -19,6 +19,7 @@ gulp.task('package-min', ['package'], function() {
 });
 gulp.task('test', function() {
   global.expect = chai.expect;
+  global.RULES = require('./src/defaults/rules');
 
   return gulp.src(['!./tests/**/*_xtest*', './tests/**/*_test*.js'])
     .pipe(mocha());

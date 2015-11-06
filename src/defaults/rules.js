@@ -7,7 +7,6 @@ module.exports = function () {
             var pattern = '^[A-Za-z' + _.flatten(extraChars) + ']+$';
 
             return new RegExp(pattern).test(input);
-
         },
         'alphanumeric': function (input) {
             var extraChars = Array.prototype.slice.call(arguments, 1);
@@ -21,11 +20,23 @@ module.exports = function () {
 
             return new RegExp('^(.*[A-Z]){' + count + ',}.*$').test(input);
         },
+        'endsWith': function(input, char) {
+          return _.endsWith(input, char);
+        },
+        'equals': function (input, value) {
+            return input === value;
+        },
         'length': function (input, length) {
             return String(input).length === Number(length);
         },
+        'max': function (input, value) {
+            return Number(input) <= value;
+        },
         'max-length': function (input, length) {
             return String(input).length <= length
+        },
+        'min': function (input, value) {
+            return Number(input) >= value;
         },
         'min-length': function (input, length) {
             return String(input).length >= length;
@@ -54,6 +65,10 @@ module.exports = function () {
             count = Number.isNaN(count) ? 1 : count;
 
             return new RegExp('^(.*[^A-Za-z0-9]){' + count + ',}.*$').test(input);
+        },
+        'startsWith': function(input, char) {
+            return _.startsWith(input, char);
         }
     };
+
 }();

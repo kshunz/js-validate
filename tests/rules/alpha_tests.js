@@ -1,4 +1,4 @@
-describe('Alpha rule tests', function() {
+describe('Alpha character rule validator', function() {
   var alpha = RULES.alpha;
 
   it('should accept lowercase characters', function() {

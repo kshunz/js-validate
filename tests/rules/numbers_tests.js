@@ -1,4 +1,4 @@
-describe('Number character tests', function() {
+describe('Number character rule validator', function() {
   var numbers = RULES.numbers;
 
   it('should accept a string with at least one number', function() {

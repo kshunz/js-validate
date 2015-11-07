@@ -1,4 +1,4 @@
-describe('EndsWith rule tests', function() {
+describe('EndsWith rule validator', function() {
   var endsWith = RULES.endsWith;
 
   it('should accept input that ends with a number', function() {

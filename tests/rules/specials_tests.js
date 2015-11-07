@@ -1,4 +1,4 @@
-describe('Special character tests', function() {
+describe('Special character rule validator', function() {
   var special = RULES.specials;
 
   it('should accept a string with at least one special character', function() {

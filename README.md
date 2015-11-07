@@ -19,3 +19,14 @@ var validate = validator.start();
 
 validate(123, 'min-length 2');
 ```
+
+<h4>Validators</h4>
+- Alpha
+- Capital
+- EndsWith
+- Min-Length
+- Number (isNumber)
+- Numbers (Number Characters)
+- Specials (Special Characters)
+- StartsWith 
+

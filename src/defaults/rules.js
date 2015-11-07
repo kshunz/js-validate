@@ -33,7 +33,7 @@ module.exports = function () {
             return Number(input) <= value;
         },
         'max-length': function (input, length) {
-            return String(input).length <= length
+            return String(input).length <= length;
         },
         'min': function (input, value) {
             return Number(input) >= value;
@@ -50,7 +50,7 @@ module.exports = function () {
                 }
 
                 input = input.split(char).join('');
-            })
+            });
 
             return String(input) === String(Number(input));
         },

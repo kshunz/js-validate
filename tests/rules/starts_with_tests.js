@@ -1,4 +1,4 @@
-describe('StartsWith rule tests', function() {
+describe('StartsWith rule validator', function() {
   var startsWith = RULES.startsWith;
 
   it('should accept input that starts with a number', function() {

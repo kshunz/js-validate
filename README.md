@@ -16,10 +16,10 @@ var validator = require('js-validate');
 var validate = validator.start();
 ```
 
-<h5>Validate against a single rule</h5>
+<h5>Validate against a single rule:</h5>
     validate('123', 'min-length 2');  //--> true
 
-<h5>Validate against multiple rules</h5>
+<h5>Validate against multiple rules:</h5>
     validate('123', ['min-length 2', 'number']);  //-->true
 
 <h4>Built-in Rules</h4>

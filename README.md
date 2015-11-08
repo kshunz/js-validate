@@ -14,19 +14,54 @@ npm install js-validate
 
 ```
 var validator = require('js-validate');
-
-var validate = validator.start();
-
-validate(123, 'min-length 2');
 ```
 
-<h4>Validators</h4>
-- Alpha
-- Capital
-- EndsWith
-- Min-Length
-- Number (isNumber)
-- Numbers (Number Characters)
-- Specials (Special Characters)
-- StartsWith 
+```
+var validate = validator.start();
+```
+
+<h5>Validate against a single rule</h5>
+```
+validate('123', 'min-length 2');  //--> true
+```
+
+<h5>Validate against multiple rules</h5>
+```
+validate('123', ['min-length 2', 'number']);  //-->true
+```
+
+<h4>Built-in Rules (14)</h4>
+- alpha
+- alphanumeric
+- capitals (counts capital characters)
+- ends-with
+- equals
+- length
+- max
+- max-length
+- min
+- min-length
+- number (isNumber)
+- numbers (Number Characters)
+- specials (Special Characters)
+- starts-with 
+
+<h5>Create a validator group (rule)<h5>
+
+```
+validator.group({
+  'account-number': [
+    'alphanumeric', 
+    'minLength 7', 
+    'startsWith 000', 
+    'endsWith 00']
+});
+```
+
+<h5>Validate against a group of rules</h5>
+
+```
+validate('000-KLJ8989123-00', 'account-number');  //--> true
+```
+
 

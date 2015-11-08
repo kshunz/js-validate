@@ -1,17 +1,13 @@
-# js-validate #
+<h2>js-validate</h2>
+<i>Functional, extensible, input validation.  Make sure the value you receive is EXACTLY what you expect.</i>
 
-### Functional, extensible, input validation.  Make sure the value you receive is EXACTLY what you expect. ###
-
-Getting Started
+<h1>Getting Started</h1>
 
 <h4>Installation</h4>
 
-```
-npm install js-validate
-```
+    npm install js-validate
 
 <h4>Quick Use</h4>
-
 ```
 var validator = require('js-validate');
 ```
@@ -21,16 +17,12 @@ var validate = validator.start();
 ```
 
 <h5>Validate against a single rule</h5>
-```
-validate('123', 'min-length 2');  //--> true
-```
+    validate('123', 'min-length 2');  //--> true
 
 <h5>Validate against multiple rules</h5>
-```
-validate('123', ['min-length 2', 'number']);  //-->true
-```
+    validate('123', ['min-length 2', 'number']);  //-->true
 
-<h4>Built-in Rules (14)</h4>
+<h4>Built-in Rules</h4>
 - alpha
 - alphanumeric
 - capitals (counts capital characters)
@@ -46,22 +38,33 @@ validate('123', ['min-length 2', 'number']);  //-->true
 - specials (Special Characters)
 - starts-with 
 
-<h5>Create a validator group (rule)<h5>
+<h5>Create a validator (rule) group:<h5>
 
-```
-validator.group({
-  'account-number': [
-    'alphanumeric', 
-    'minLength 7', 
-    'startsWith 000', 
-    'endsWith 00']
-});
-```
+    validator.group({
+      'account-number': [
+        'alphanumeric', 
+        'min-length 7', 
+        'starts-with 000', 
+        'ends-with 00'
+      ]
+    });
 
-<h5>Validate against a group of rules</h5>
+<h5>Validate against a group of rules:</h5>
 
-```
-validate('000-KLJ8989123-00', 'account-number');  //--> true
-```
+    validate('000-KLJ8989123-00', 'account-number');  //--> true
 
+<h5>Create a custom rule:</h5>
 
+    validator.rules({
+      isOkay: function(input) {
+        return input === 'ok';
+      }
+    });
+
+<h5>Keep this in mind when creating custom rules:</h5>
+
+- Validator rules must return a pure boolean (true | false)
+- The first parameter must be the user input
+- Unlimited additional parameters are supported
+- Custom rules are added to the default rule list
+- Custom rules may be used in conjunction with defaults in rule groups

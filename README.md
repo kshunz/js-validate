@@ -37,18 +37,19 @@ var validate = validator.start();
 - numbers (Number Characters)
 - specials (Special Characters)
 - starts-with 
-
-<h5>Create a validator (rule) group:<h5>
+  
+  
+<h5>Create a validator (rule) group:</h5>
 
     validator.group({
       'account-number': [
-        'alphanumeric', 
-        'min-length 7', 
-        'starts-with 000', 
-        'ends-with 00'
+        'alphanumeric',
+        'min-length 7',
+        'starts-with 000-',
+        'ends-with -00'
       ]
     });
-
+    
 <h5>Validate against a group of rules:</h5>
 
     validate('000-KLJ8989123-00', 'account-number');  //--> true

@@ -23,6 +23,8 @@ module.exports = function Validate() {
             var rules = rule;
             var validator;
             var validatorInput;
+            var flipRule = false;
+            var result = false;
 
             if(!Array.isArray(rules)) {
                 rules = [];
@@ -44,7 +46,13 @@ module.exports = function Validate() {
             rules = _.flatten(rules);
 
             atLeastOneRuleFailed = rules.some(function(rule) {
+
                 validatorInput = rule.split(' ');  //rules may have parameters separated by spaces
+                flipRule = _.contains(['not', '!', '-'], _.first(validatorInput)) && validatorInput.length > 1;
+
+                if(flipRule) {
+                  validatorInput.shift();
+                }
 
                 rule = validatorInput.shift(); //the rule name is the first parameter; not needed by validator
 
@@ -52,7 +60,9 @@ module.exports = function Validate() {
                 validatorInput.unshift(input); //the first parameter of a validator entry is the test input
 
                 //auto-fail the rule if the rule isn't set
-                return validator ? validator.apply(null, validatorInput) === false : true;
+                result = validator ? validator.apply(null, validatorInput) === false : true;
+
+                return flipRule ? !result : result;
             });
 
             return atLeastOneRuleFailed ? false : true;

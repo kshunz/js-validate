@@ -8,7 +8,7 @@
     npm install js-validate
 
 <h4>Quick Use</h4>
-```
+```node
 var validator = require('js-validate');
 ```
 
@@ -17,14 +17,17 @@ var validate = validator.start();
 ```
 
 <h5>Validate against a single rule:</h5>
+
     validate('123', 'min-length 2');  //--> true
 
 <h5>Validate against multiple rules:</h5>
+
     validate('123', ['min-length 2', 'number']);  //-->true
 
 <h4>Built-in Rules</h4>
 - alpha
 - alphanumeric
+- boolean **NEW**
 - capitals (counts capital characters)
 - ends-with
 - equals
@@ -33,12 +36,14 @@ var validate = validator.start();
 - max-length
 - min
 - min-length
-- number (isNumber)
+- number (isNumber) ***Altered Rule***
 - numbers (Number Characters)
+- numeric (consists of numerical digits) **NEW**
 - specials (Special Characters)
-- starts-with 
-  
-  
+- starts-with
+
+
+
 <h5>Create a validator (rule) group:</h5>
 
     validator.group({
@@ -49,7 +54,7 @@ var validate = validator.start();
         'ends-with -00'
       ]
     });
-    
+
 <h5>Validate against a group of rules:</h5>
 
     validate('000-KLJ8989123-00', 'account-number');  //--> true

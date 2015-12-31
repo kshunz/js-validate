@@ -14,6 +14,15 @@ module.exports = function () {
 
             return new RegExp(pattern).test(input);
         },
+        'boolean': function(input) {
+            var pureBoolean = typeof input === 'boolean';
+
+            if(!pureBoolean) {
+              input = String(input).toLowerCase();
+            }
+
+            return pureBoolean || input === 'true' || input === 'false';
+        },
         'capitals': function (input, count) {
             count = Number(count);
             count = Number.isNaN(count) ? 1 : count;
@@ -21,7 +30,7 @@ module.exports = function () {
             return new RegExp('^(.*[A-Z]){' + count + ',}.*$').test(input);
         },
         'endsWith': function(input, char) {
-          return _.endsWith(input, char);
+            return _.endsWith(input, char);
         },
         'equals': function (input, value) {
             return input === value;
@@ -45,20 +54,32 @@ module.exports = function () {
             var extraChars = Array.prototype.slice.call(arguments, 1);
 
             extraChars.forEach(function(char) {
-                if(String(char).toLowerCase() === 'space') {
-                    char = ' ';
-                }
+              if(String(char).toLowerCase() === 'space') {
+                char = ' ';
+              }
 
-                input = input.split(char).join('');
+              input = input.split(char).join('');
             });
 
-            return String(input) === String(Number(input));
+            var decimals = String(input).split('.')[1];
+            var numDecimals = decimals ? decimals.length : 0;
+
+            return String(input) === String(Number(input).toFixed(numDecimals));
         },
         'numbers': function (input, count) {
             count = Number(count);
             count = Number.isNaN(count) ? 1 : count;
 
             return new RegExp('^(.*[0-9]){' + count + ',}.*$').test(input);
+        },
+        'numeric': function(input) {
+            var inputAsString = String(input);
+            var numbers = inputAsString.split('');
+
+            return !numbers.some(function(num) {
+              num = num === '.' ? 0 : Number(num);
+              return num * 1 !== Number(num);
+            });
         },
         'specials': function (input, count) {
             count = Number(count);

@@ -60,7 +60,7 @@ module.exports = function Validate() {
                 validatorInput.unshift(input); //the first parameter of a validator entry is the test input
 
                 //auto-fail the rule if the rule isn't set
-                result = validator ? validator.apply(null, validatorInput) === false : true;
+                result = validator ? validator.apply(this, validatorInput) === false : true;
 
                 return flipRule ? !result : result;
             });
@@ -71,4 +71,3 @@ module.exports = function Validate() {
 
     return this instanceof Validate ? this : new Validate();
 }();
-

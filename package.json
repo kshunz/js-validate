@@ -4,8 +4,8 @@
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "src/validate.js",
   "scripts": {
-    "start": "npm install && ./node_modules/.bin/gulp",
-    "test": "./node_modules/.bin/gulp test"
+    "start": "npm install && ./node_modules/.bin/gulp test && ./node_modules/.bin/gulp package-min",
+    "test": "snyk test && ./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
@@ -26,15 +26,19 @@
   },
   "devDependencies": {
     "bower": "^1.6.5",
-    "chai": "^3.4.0",
-    "gulp": "^3.9.0",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
-    "gulp-bump": "^1.0.0",
-    "gulp-mocha": "^2.1.3",
+    "gulp-bump": "^2.1.0",
+    "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.4.2"
+    "gulp-task-listing": "^1.0.1",
+    "gulp-uglify": "^1.4.2",
+    "gulp-util": "^3.0.7",
+    "sinon": "^1.17.3"
   },
   "dependencies": {
-    "lodash": "^4.5.1"
+    "lodash": "^4.7.0",
+    "snyk": "^1.13.2"
   }
 }

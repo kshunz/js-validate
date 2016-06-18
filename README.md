@@ -27,22 +27,22 @@ var validate = validator.start();
 <h4>Built-in Rules</h4>
 - alpha
 - alphanumeric
-- boolean **NEW**
+- boolean
 - capitals (counts capital characters)
 - ends-with
 - equals
 - length
+- matches **NEW**
+- matchesExactly **NEW**
 - max
 - max-length
 - min
 - min-length
-- number (isNumber) ***Altered Rule***
+- number (isNumber)
 - numbers (Number Characters)
-- numeric (consists of numerical digits) **NEW**
+- numeric (consists of numerical digits)
 - specials (Special Characters)
 - starts-with
-
-
 
 <h5>Create a validator (rule) group:</h5>
 

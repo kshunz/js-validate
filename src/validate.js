@@ -48,7 +48,7 @@ module.exports = function Validate() {
             atLeastOneRuleFailed = rules.some(function(rule) {
 
                 validatorInput = rule.split(' ');  //rules may have parameters separated by spaces
-                flipRule = _.contains(['not', '!', '-'], _.first(validatorInput)) && validatorInput.length > 1;
+                flipRule = _.includes(['not', '!', '-'], _.first(validatorInput)) && validatorInput.length > 1;
 
                 if(flipRule) {
                   validatorInput.shift();

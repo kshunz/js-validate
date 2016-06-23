@@ -9,7 +9,10 @@ module.exports = function () {
             return new RegExp(pattern).test(input);
         },
         alphanumeric: function (input) {
-            var extraChars = Array.prototype.slice.call(arguments, 1);
+            var extraChars = Array.prototype.slice.call(arguments, 1).map(function (char) {
+                return char === '_space_' ? ' ' : char;
+            });
+            
             var pattern = '^[A-Za-z0-9' + _.flatten(extraChars) + ']+$';
 
             return new RegExp(pattern).test(input);

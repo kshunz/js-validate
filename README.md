@@ -26,7 +26,7 @@ var validate = validator.start();
 
 <h4>Built-in Rules</h4>
 - alpha
-- alphanumeric
+- alphanumeric **NOW ACCEPTS ADDITIONAL CHARACTERS**
 - boolean
 - capitals (counts capital characters)
 - ends-with
@@ -66,6 +66,18 @@ var validate = validator.start();
         return input === 'ok';
       }
     });
+
+<h5>Alphanumeric with additional characters</h5>
+*Alphanumeric plus spaces*
+    
+    validate('Mulberry Lane', 'alphanumeric');  //--> false
+    
+    validate('Mulberry Lane', 'alphanumeric _space_');  //--> true
+    
+*Alphanumeric plus any other character*
+    
+    validate('Box #123', 'alphanumeric _space_ #');  //--> true
+    validate('888-JS-VALIDATE', 'alphanumeric -');  //--> true
 
 <h5>Keep this in mind when creating custom rules:</h5>
 

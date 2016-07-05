@@ -12,7 +12,7 @@ module.exports = function () {
             var extraChars = Array.prototype.slice.call(arguments, 1).map(function (char) {
                 return char === '_space_' ? ' ' : char;
             });
-            
+
             var pattern = '^[A-Za-z0-9' + _.flatten(extraChars) + ']+$';
 
             return new RegExp(pattern).test(input);

@@ -1,8 +1,8 @@
 {
   "name": "js-validate",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
-  "main": "src/validate.js",
+  "main": "dist/js-validate.js",
   "scripts": {
     "start": "npm install && ./node_modules/.bin/gulp test && ./node_modules/.bin/gulp package-min",
     "test": "./node_modules/.bin/gulp test"

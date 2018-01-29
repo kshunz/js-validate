@@ -1,6 +1,6 @@
 {
   "name": "js-validate",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "src/validate.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-task-listing": "^1.0.1",
-    "gulp-uglify": "^1.5.4",
+    "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.7",
     "sinon": "^1.17.3"
   },

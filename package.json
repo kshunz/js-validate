@@ -1,6 +1,6 @@
 {
   "name": "js-validate",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "src/validate.js",
   "scripts": {

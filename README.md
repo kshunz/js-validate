@@ -1,31 +1,28 @@
-<h2>js-validate</h2>
+## js-validate
 <i>Functional, extensible, input validation.  Make sure the value you receive is EXACTLY what you expect.</i>
 
-<h1>Getting Started</h1>
+# Getting Started
 
-<h4>Installation</h4>
+### Installation
 
     npm install js-validate
 
-<h4>Quick Use</h4>
+### Quick Use
 
-```node
-var validator = require('js-validate');
-```
+    const validator = require('js-validate');
 
-```
-var validate = validator.start();
-```
+    const validate = validator.start();
 
-<h5>Validate against a single rule:</h5>
+
+> Validate against a single rule:
 
     validate('123', 'min-length 2');  //--> true
 
-<h5>Validate against multiple rules:</h5>
+> Validate against multiple rules:
 
     validate('123', ['min-length 2', 'number']);  //-->true
 
-<h4>Built-in Rules</h4>
+### Built-in Rules
 
 - alpha
 - alphanumeric **NOW ACCEPTS ADDITIONAL CHARACTERS**
@@ -46,7 +43,7 @@ var validate = validator.start();
 - specials (Special Characters)
 - starts-with
 
-<h5>Create a validator (rule) group:</h5>
+> Create a validator (rule) group:
 
     validator.group({
       'account-number': [
@@ -57,11 +54,11 @@ var validate = validator.start();
       ]
     });
 
-<h5>Validate against a group of rules:</h5>
+> Validate against a group of rules:
 
     validate('000-KLJ8989123-00', 'account-number');  //--> true
 
-<h5>Create a custom rule:</h5>
+> Create a custom rule:
 
     validator.rules({
       isOkay: function(input) {
@@ -69,20 +66,19 @@ var validate = validator.start();
       }
     });
 
-<h5>Alphanumeric with additional characters</h5>
+> Alphanumeric with spaces
 
-> Alphanumeric plus spaces
-    
     validate('Mulberry Lane', 'alphanumeric');  //--> false
-    
+
     validate('Mulberry Lane', 'alphanumeric _space_');  //--> true
-    
+
 > Alphanumeric plus any other character
-    
+
     validate('Box #123', 'alphanumeric _space_ #');  //--> true
+
     validate('888-JS-VALIDATE', 'alphanumeric -');  //--> true
 
-<h5>Keep this in mind when creating custom rules:</h5>
+### Keep this in mind when creating custom rules:
 
 - Validator rules must return a pure boolean (true | false)
 - The first parameter must be the user input

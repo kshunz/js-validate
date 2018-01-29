@@ -5,11 +5,11 @@ module.exports = class  {
     validate () {
         var rules = Array.prototype.slice.call(arguments);
         var input = rules.shift();
-        var rulesets = new Rules;
+        var rulesets = new Rules();
 
         rules = rules[0];
         rules = typeof rules === 'string' ? [rules] : rules;
-        
+
         var validators = rules.map(function (rule) {
             var params = typeof rule !== 'string' ? rule : rule.split(' ');
             var ruleName = params.shift();
@@ -27,7 +27,7 @@ module.exports = class  {
 
         return Promise.all(validators);
     }
-    
+
     constructor () {
         return this.validate;
     }

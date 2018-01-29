@@ -15,6 +15,7 @@ describe('Alphanumeric character rule validator', function() {
     expect(alphanumeric('José')).to.be.false;
   });
   it('should accept numbers only', function () {
+    /*jshint -W046 */
     expect(alphanumeric(1232)).to.be.true;
     expect(alphanumeric(000222)).to.be.true;
     expect(alphanumeric('00324')).to.be.true;

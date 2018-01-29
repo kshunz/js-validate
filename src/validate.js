@@ -4,21 +4,21 @@ module.exports = function Validate() {
     this.groupNames = require('./defaults/groups');
     this.rulesets = require('./defaults/rules');
 
-    this.rules = function(ruleset) {
+    this.rules = function (ruleset) {
         _.extend(this.rulesets, ruleset);
     };
 
-    this.group = function(namedRules) {
+    this.group = function (namedRules) {
         _.extend(this.groupNames, namedRules);
     };
 
-    this.start = function() {
+    this.start = function () {
 
         var atLeastOneRuleFailed;
         var groupNames = this.groupNames;
         var rulesets = this.rulesets;
 
-        return function(input, rule) {
+        return function (input, rule) {
 
             var rules = rule;
             var validator;
@@ -26,7 +26,7 @@ module.exports = function Validate() {
             var flipRule = false;
             var result = false;
 
-            if(!Array.isArray(rules)) {
+            if (!Array.isArray(rules)) {
                 rules = [];
                 rules.push(rule);
             }
@@ -35,23 +35,23 @@ module.exports = function Validate() {
             this.rulesets = rulesets;
 
             //swap group for associated rules
-            rules = rules.map(function(rule) {
+            rules = rules.map(function (rule) {
                 return rule;
             });
 
-            rules = rules.map(function(rule) {
+            rules = rules.map(function (rule) {
                 return this.groupNames[rule] || rule;
             });
 
             rules = _.flatten(rules);
 
-            atLeastOneRuleFailed = rules.some(function(rule) {
+            atLeastOneRuleFailed = rules.some(function (rule) {
 
                 validatorInput = rule.split(' ');  //rules may have parameters separated by spaces
-                flipRule = _.contains(['not', '!', '-'], _.first(validatorInput)) && validatorInput.length > 1;
+                flipRule = _.includes(['not', '!', '-'], _.first(validatorInput)) && validatorInput.length > 1;
 
-                if(flipRule) {
-                  validatorInput.shift();
+                if (flipRule) {
+                    validatorInput.shift();
                 }
 
                 rule = validatorInput.shift(); //the rule name is the first parameter; not needed by validator

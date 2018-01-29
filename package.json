@@ -1,11 +1,11 @@
 {
   "name": "js-validate",
-  "version": "0.4.0",
+  "version": "1.1.2",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "src/validate.js",
   "scripts": {
     "start": "npm install && ./node_modules/.bin/gulp test && ./node_modules/.bin/gulp package-min",
-    "test": "snyk test && ./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
@@ -38,7 +38,6 @@
     "sinon": "^1.17.3"
   },
   "dependencies": {
-    "lodash": "^4.7.0",
-    "snyk": "^1.13.2"
+    "lodash": "^4.7.0"
   }
 }

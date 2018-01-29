@@ -8,6 +8,7 @@
     npm install js-validate
 
 <h4>Quick Use</h4>
+
 ```node
 var validator = require('js-validate');
 ```
@@ -25,6 +26,7 @@ var validate = validator.start();
     validate('123', ['min-length 2', 'number']);  //-->true
 
 <h4>Built-in Rules</h4>
+
 - alpha
 - alphanumeric **NOW ACCEPTS ADDITIONAL CHARACTERS**
 - boolean
@@ -68,13 +70,14 @@ var validate = validator.start();
     });
 
 <h5>Alphanumeric with additional characters</h5>
-*Alphanumeric plus spaces*
+
+> Alphanumeric plus spaces
     
     validate('Mulberry Lane', 'alphanumeric');  //--> false
     
     validate('Mulberry Lane', 'alphanumeric _space_');  //--> true
     
-*Alphanumeric plus any other character*
+> Alphanumeric plus any other character
     
     validate('Box #123', 'alphanumeric _space_ #');  //--> true
     validate('888-JS-VALIDATE', 'alphanumeric -');  //--> true

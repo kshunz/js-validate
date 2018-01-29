@@ -13,5 +13,5 @@ describe('Special character rule validator', function() {
   it('ISSUE: Treats certain letters like special characters (é, ñ, etc.)', function() {
     expect(special('José', '1')).to.be.true;  //@TODO: Should be false
     expect(special('años', '1')).to.be.true; //@TODO: Should be false
-  })
+  });
 });

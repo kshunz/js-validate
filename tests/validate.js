@@ -28,13 +28,13 @@ describe('JS-VALIDATE CORE', function() {
   describe('VALIDATOR module', function() {
     //Covers src/validate/validate
     var v = require('../src/js-validate');
-    
+
     v.rules.add('minLen5', function(input) {
       return input.length > 4;
     });
 
     it('should validate against a provided RULE', function() {
-      expect(v.validate(123, 'Number')).to.be.false
+      expect(v.validate(123, 'Number')).to.be.false;
       expect(v.rules.sets.minLen5).to.not.be.undefined;
       expect(v.rules.sets.minLen5).to.be.a('function');
       expect(v.validate('rosebud', 'minLen5')).to.be.true;

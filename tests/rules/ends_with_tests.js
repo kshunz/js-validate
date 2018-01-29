@@ -2,10 +2,10 @@ describe('EndsWith rule validator', function() {
   var endsWith = RULES.endsWith;
 
   it('should accept input that ends with a number', function() {
-    expect(endsWith('Route 63', '63')).to.be.true
+    expect(endsWith('Route 63', '63')).to.be.true;
   });
   it('should accept input that ends with a letter', function() {
-    expect(endsWith('Sixty Three', 'Three')).to.be.true
+    expect(endsWith('Sixty Three', 'Three')).to.be.true;
   });
   it('should match case', function() {
     expect(endsWith('Titan AE', 'AE')).to.be.true;

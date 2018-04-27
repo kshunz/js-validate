@@ -1,21 +1,23 @@
-var runTests = require('gulp-mocha');
-var chai = require('chai');
-var sinon = require('sinon');
+const runTests = require('gulp-mocha');
+const chai = require('chai');
+const sinon = require('sinon');
 
-gulp.task('test', function() {
+exports.test = function test() {
   global.expect = chai.expect;
   global.sinon = sinon;
   global.RULES = require(process.cwd() + '/src/defaults/rules');
 
   return gulp.src([
-    '!./tests/**/*_xtests.js',
-    './tests/**/*_tests.js'])
-  .pipe(runTests());
+      '!./tests/**/*_xtests.js',
+      './tests/**/*_tests.js'
+    ])
+    .pipe(runTests());
 
-});
+};
 
-gulp.task('test-watch', function() {
+exports['test-watch'] = function testWatch() {
   return gulp.watch([
     '!./tests/**/*_xtests.js',
-    './tests/**/*_tests.js'], ['test']);
-});
+    './tests/**/*_tests.js'
+  ], ['test']);
+};

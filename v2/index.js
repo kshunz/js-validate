@@ -3,20 +3,40 @@ const v1 = require('../src/validate');
 const v1Validate = v1.start();
 
 class Rules {
-    constructor() {
+    constructor(userRules = {}) {
         //@TODO: Obviously don't do this for long
         Object.assign(this, v1.rulesets);
+        Object.assign(this, userRules);
+
+        //@TODO: Seriously, upgrade for real
+        v1.rules(this);
     }
 }
 class Validator {
     constructor() {
         //don't extend so that namespacing will be possible
-        this.rules = new Rules(...arguments);
+        //@NOTE: defs are only set if group is called by the user
+        this.rules = Validator.definitions || new Rules(Validator.userRules);
 
         let isInstance = this instanceof Validator;
         if (isInstance) {
             return this.validate.bind(this);
         }
+    }
+
+    static group(name, defs) {
+      //needs a reference to rules at this.definitions
+      this.importRules();
+      v1.group({[name]: defs});
+    }
+
+    static rule(name, method) {
+      this.userRules = this.userRules || {};
+      this.userRules[name] = method;
+    }
+
+    static importRules() {
+      this.definitions = new Rules(Validator.userRules);
     }
 
     static start() {

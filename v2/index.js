@@ -24,6 +24,10 @@ class Validator {
         }
     }
 
+    static alias() {
+      return this.group(...arguments);
+    }
+
     static group(name, defs) {
       //needs a reference to rules at this.definitions
       this.importRules();

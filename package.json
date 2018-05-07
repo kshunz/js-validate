@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm install && ./node_modules/.bin/gulp test && ./node_modules/.bin/gulp package-min",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp test",
+    "test-watch": "./node_modules/.bin/gulp test-watch"
   },
   "repository": {
     "type": "git",

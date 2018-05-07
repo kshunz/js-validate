@@ -45,7 +45,7 @@ module.exports = function() {
             var options = Array.prototype.slice.call(arguments, 1);
 
             return options.some(function(opt) {
-                return input.toUpperCase() === opt.toUpperCase();
+                return String(input).toUpperCase() === opt.toUpperCase();
             });
         },
         matchesExactly: function(input, value) {
@@ -67,7 +67,7 @@ module.exports = function() {
             var extraChars = Array.prototype.slice.call(arguments, 1);
 
             extraChars.forEach(function(char) {
-                if (String(char).toLowerCase() === 'space') {
+                if (String(char).toLowerCase() === '_space_') {
                     char = ' ';
                 }
 

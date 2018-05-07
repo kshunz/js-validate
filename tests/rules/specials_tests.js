@@ -1,5 +1,6 @@
 describe('Special character rule validator', function() {
-  var special = RULES.specials;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const special = RULES.specials;
 
   it('should accept a string with at least one special character', function() {
     expect(special('#1Stunner')).to.be.true;

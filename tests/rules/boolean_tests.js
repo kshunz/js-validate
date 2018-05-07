@@ -1,5 +1,6 @@
 describe('Boolean rule validator', function() {
-  var boolean = RULES.boolean;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const boolean = RULES.boolean;
 
   it('should accept pure booleans', function() {
     expect(boolean(true)).to.be.true;

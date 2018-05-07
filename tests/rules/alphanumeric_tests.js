@@ -1,5 +1,6 @@
 describe('Alphanumeric character rule validator', function() {
-  var alphanumeric = RULES.alphanumeric;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const alphanumeric = RULES.alphanumeric;
 
   it('should accept lowercase characters and numbers', function() {
     expect(alphanumeric('abc123')).to.be.true;

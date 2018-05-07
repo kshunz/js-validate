@@ -1,5 +1,6 @@
 describe('Capital character rule validator', function() {
-  var capital = RULES.capitals;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const capital = RULES.capitals;
 
   it('should accept a string with at least one capital', function() {
     expect(capital('ePass')).to.be.true;

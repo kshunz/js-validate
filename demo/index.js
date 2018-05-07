@@ -11,8 +11,8 @@ Validator.rule('isBarLike', function isFooLike(input) {
 
 Validator.group('short', ['min-length 1', 'max-length 5']);
 
-// const validate = new Validator;
-const validate = Validator.start();
+const validate = new Validator;
+// const validate = Validator.start();
 
 const env = {
     "To": "+15553331234",
@@ -50,6 +50,7 @@ test(true, validate(env, 'To.startsWith +'));
 test(true, validate(env.To, 'startsWith +'));
 test(false, validate(env.From, 'startsWith _'));
 test(true, validate(env.From, 'startsWith +'));
+test(true, validate('Foo', ['capitals 1', 'startsWith F', 'endsWith o']))
 
 function test(expectedResult, conditionToTest) {
 	var failMsg = '\033[1;31mFail: \033[0m' + `${expectedResult} expected but got ${conditionToTest}`,

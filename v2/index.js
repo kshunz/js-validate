@@ -35,6 +35,14 @@ class Validator {
       this.userRules[name] = method;
     }
 
+    static rules() {
+      if(!this.definitions) {
+        this.importRules();
+      }
+
+      return this.definitions;
+    }
+
     static importRules() {
       this.definitions = new Rules(Validator.userRules);
     }

@@ -26,6 +26,7 @@
     "url": "https://github.com/kshunz/js-validate/issues"
   },
   "devDependencies": {
+    "@kshunz/mutest": "^1.0.0",
     "bower": "^1.6.5",
     "chai": "^3.5.0",
     "gulp": "^4.0.0",

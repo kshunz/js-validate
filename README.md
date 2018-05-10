@@ -9,7 +9,7 @@
 
 ### Instantiate
 
-    const validator = require('js-validate');
+    const Validator = require('js-validate');
 
     const validate = new Validator;
 
@@ -23,12 +23,12 @@
 
 > Create a validator alias (single-rule):
 
-    validator.alias('short', 'max-length 3');
+    Validator.alias('short', 'max-length 3');
 
 
 > Create a validator alias (multiple rules):
 
-    validator.alias('account-number', [
+    Validator.alias('account-number', [
       'alphanumeric -',
       'min-length 7',
       'starts-with 000-',
@@ -37,7 +37,7 @@
 
 > Create a custom rule:
 
-    validator.rule('isOkay', (input) => {
+    Validator.rule('isOkay', (input) => {
       return String(input).toLowerCase() === 'ok';
     });
 
@@ -45,7 +45,7 @@
 
 ``` const tin = require('tin-validator'); ```
 
-    validator.rule('ssn-ein-tin', tin.isValid);
+    Validator.rule('ssn-ein-tin', tin.isValid);
 
 > Test custom rules and aliases:
 

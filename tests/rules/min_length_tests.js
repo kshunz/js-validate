@@ -1,3 +1,5 @@
+const { expect } = require('chai');
+
 describe('Min-length validator', function() {
   const RULES = require(process.cwd() + '/src/defaults/rules');
   const minLength = RULES['min-length'];

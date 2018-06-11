@@ -1,3 +1,5 @@
+const { expect } = require('chai');
+
 describe('Boolean rule validator', function() {
   const RULES = require(process.cwd() + '/src/defaults/rules');
   const boolean = RULES.boolean;

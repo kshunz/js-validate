@@ -1,3 +1,5 @@
+const { expect } = require('chai');
+
 describe('E2E TESTING', () => {
     const Validator = require(process.cwd());
     const validate = new Validator;

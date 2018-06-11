@@ -1,3 +1,5 @@
+const { expect } = require('chai');
+
 describe('Alpha character rule validator', function() {
   const RULES = require(process.cwd() + '/src/defaults/rules');
   const alpha = RULES.alpha;

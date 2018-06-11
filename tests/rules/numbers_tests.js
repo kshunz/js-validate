@@ -1,3 +1,5 @@
+const { expect } = require('chai');
+
 describe('Number character rule validator', function() {
   const RULES = require(process.cwd() + '/src/defaults/rules');
   const numbers = RULES.numbers;

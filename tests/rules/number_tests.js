@@ -1,5 +1,8 @@
+const { expect } = require('chai');
+
 describe('Number rule validator', function() {
-  var number = RULES.number;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const number = RULES.number;
 
   it('should accept whole numbers', function() {
     expect(number(123)).to.be.true;

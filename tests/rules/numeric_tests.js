@@ -1,5 +1,8 @@
+const { expect } = require('chai');
+
 describe('Numeric rule validator (made up of numbers)', function() {
-  var numeric = RULES.numeric;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const numeric = RULES.numeric;
 
   it('should accept whole numbers', function() {
     expect(numeric('123a')).to.be.false;

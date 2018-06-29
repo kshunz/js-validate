@@ -1,11 +1,15 @@
 {
   "name": "js-validate",
-  "version": "1.3.0",
+  "version": "2.0.1",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
-  "main": "dist/js-validate.js",
+  "main": "index.js",
   "scripts": {
     "start": "npm install && ./node_modules/.bin/gulp test && ./node_modules/.bin/gulp package-min",
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/gulp test",
+    "major": "./node_modules/.bin/gulp v.major",
+    "minor": "./node_modules/.bin/gulp v.minor",
+    "patch": "./node_modules/.bin/gulp v.patch",
+    "test-watch": "./node_modules/.bin/gulp test-watch"
   },
   "repository": {
     "type": "git",
@@ -25,20 +29,22 @@
     "url": "https://github.com/kshunz/js-validate/issues"
   },
   "devDependencies": {
+    "@kshunz/mutest": "^1.0.0",
     "bower": "^1.6.5",
     "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1",
+    "gulp": "^4.0.0",
     "gulp-bump": "^2.1.0",
-    "gulp-mocha": "^2.2.0",
+    "gulp-mocha": "^5.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-task-listing": "^1.0.1",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.7",
-    "sinon": "^1.17.3"
+    "path-parse": "^1.0.5",
+    "sinon": "^1.17.3",
+    "walk-sync": "^0.3.2"
   },
   "dependencies": {
-    "lodash": "^4.7.0",
+    "lodash": "^4.17.10",
     "uglify-js": "^3.3.9"
   }
 }

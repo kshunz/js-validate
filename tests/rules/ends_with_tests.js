@@ -1,5 +1,8 @@
+const { expect } = require('chai');
+
 describe('EndsWith rule validator', function() {
-  var endsWith = RULES.endsWith;
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const endsWith = RULES.endsWith;
 
   it('should accept input that ends with a number', function() {
     expect(endsWith('Route 63', '63')).to.be.true;

@@ -1,5 +1,8 @@
+const { expect } = require('chai');
+
 describe('Min-length validator', function() {
-  var minLength = RULES['min-length'];
+  const RULES = require(process.cwd() + '/src/defaults/rules');
+  const minLength = RULES['min-length'];
 
   it('should accept inputs equal to or less than a specified length', function() {
     expect(minLength('hello', '5')).to.be.true;

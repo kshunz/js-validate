@@ -1,20 +1,22 @@
 global.gulp = require('gulp');
-global.gutil = require('gulp-util');
-global.log = global.gutil.log;
-global.c = global.gutil.colors;
-
-var taskListing = require('gulp-task-listing');
-var fs = require('fs');
-var files = fs.readdirSync('./tasks');
-
-files.forEach(function (file) {
-    var isJs = (file.split('.js').length > 1);
-
-    if(file !== 'plugins' && isJs) {
-        require('./tasks' + '/' + file);
-    }
+const walk = require('walk-sync');
+const registry = {};
+const pathParse = require('path-parse');
+const taskFiles = walk('./tasks').filter(function(taskPath) {
+  return pathParse(taskPath).ext === '.js';
 });
 
-gulp.task('help', taskListing);
+const tasks = {};
+taskFiles.forEach(function(taskPath) {
+  let task = require([
+    './tasks',
+    pathParse(taskPath).dir,
+    pathParse(taskPath).name
+  ].join('/'));
 
-gulp.task('default', ['help']);
+  Object.assign(tasks, task);
+});
+
+Object.keys(tasks).forEach(task => {
+  gulp.task(task, tasks[task])
+});

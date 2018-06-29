@@ -1,20 +1,23 @@
-var bump = require('gulp-bump');
+const bump = require('gulp-bump');
 
-gulp.task('v.patch', function() {
+exports['v.patch'] = () => {
   return gulp.src(['./bower.json', './package.json'])
     .pipe(bump())
     .pipe(gulp.dest('./'));
+};
 
-});
-
-gulp.task('v.minor', function() {
+exports['v.minor'] = () => {
   return gulp.src(['./bower.json', './package.json'])
-    .pipe(bump({ type: 'minor' }))
+    .pipe(bump({
+      type: 'minor'
+    }))
     .pipe(gulp.dest('./'));
-});
+};
 
-gulp.task('v.major', function() {
+exports['v.major'] = () => {
   return gulp.src(['./bower.json', './package.json'])
-    .pipe(bump({ type: 'major' }))
+    .pipe(bump({
+      type: 'major'
+    }))
     .pipe(gulp.dest('./'));
-});
+};

@@ -16,9 +16,9 @@ const validate = new Validator;
 // const validate = Validator.start();
 
 const env = {
-    "To": "+15553331234",
-    "From": "+15558880000",
-    "Body": "Hello"
+  "To": "+15553331234",
+  "From": "+15558880000",
+  "Body": "Hello"
 };
 
 test(true, validate('12345', 'short'));
@@ -30,21 +30,21 @@ test(true, validate('debarge', 'isBarLike'));
 test(true, validate('000-123-ABC', [
   'startsWith 000-',
   'endsWith ABC',
-  'alphanumeric -']
-));
+  'alphanumeric -'
+]));
 
 test(true, validate(env, [
-    'To.startsWith +',
-    'To.length 12',
-    'From.startsWith +',
-    'Body.startsWith H'
+  'To.startsWith +',
+  'To.length 12',
+  'From.startsWith +',
+  'Body.startsWith H'
 ]));
 
 test(false, validate(env, [
-    'To.startsWith _',
-    'To.length 12',
-    'From.startsWith 0',
-    'Body.startsWith H'
+  'To.startsWith _',
+  'To.length 12',
+  'From.startsWith 0',
+  'Body.startsWith H'
 ]));
 
 test(true, validate(env, 'To.startsWith +'));

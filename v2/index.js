@@ -1,83 +1,123 @@
 const _ = require('lodash');
-const v1 = require('../src/validate');
-const v1Validate = v1.start();
+const fs = require('fs');
+const path = require('path');
+const yaml = require('yamljs');
+const core = require('../src/validate');
+
+const coreValidate = core.start();
+const messages = new Map();
 
 class Rules {
-    constructor(userRules = {}) {
-        //@TODO: Obviously don't do this for long
-        Object.assign(this, v1.rulesets);
-        Object.assign(this, userRules);
+  constructor(userRules = {}) {
+    //@TODO: Obviously don't do this for long
+    Object.assign(this, core.rulesets);
+    Object.assign(this, userRules);
 
-        //@TODO: Seriously, upgrade for real
-        v1.rules(this);
-    }
+    //@TODO: Seriously, upgrade for real
+    core.rules(this);
+  }
 }
 class Validator {
-    constructor() {
-        //don't extend so that namespacing will be possible
-        //@NOTE: defs are only set if group is called by the user
-        this.rules = Validator.definitions || new Rules(Validator.userRules);
+  constructor() {
+    //don't extend so that namespacing will be possible
+    //@NOTE: defs are only set if group is called by the user
+    this.rules = Validator.definitions || new Rules(Validator.userRules);
 
-        let isInstance = this instanceof Validator;
-        if (isInstance) {
-            return this.validate.bind(this);
-        }
+    let isInstance = this instanceof Validator;
+    if (isInstance) {
+      return this.validate.bind(this);
+    }
+  }
+
+  static alias() {
+    return core.group(...arguments);
+  }
+
+  static error(rule, response) {
+    messages.set(`invalid.${rule}`, response);
+  }
+
+  static file(filename) {
+    const isYaml = coreValidate(path.extname(filename), 'equals .yaml');
+
+    let file = {};
+    if (isYaml) {
+      file = yaml.load(filename);
     }
 
-    static alias() {
-      return this.group(...arguments);
-    }
+    Object.keys(file || {})
+      .map(a => [a, file[a]])
+      .map(sets => this.alias(...sets));
+  }
 
-    static group(name, defs) {
-      //needs a reference to rules at this.definitions
+  static success(rule, response) {
+    messages.set(`valid.${rule}`, response);
+  }
+
+  static group(name, defs) {
+    //needs a reference to rules at this.definitions
+    this.importRules();
+    core.group({
+      [name]: defs
+    });
+  }
+
+  static rule(name, method) {
+    this.userRules = this.userRules || {};
+    this.userRules[name] = method;
+  }
+
+  static rules() {
+    if (!this.definitions) {
       this.importRules();
-      v1.group({[name]: defs});
     }
 
-    static rule(name, method) {
-      this.userRules = this.userRules || {};
-      this.userRules[name] = method;
-    }
+    return this.definitions;
+  }
 
-    static rules() {
-      if(!this.definitions) {
-        this.importRules();
+  static importRules() {
+    this.definitions = new Rules(Validator.userRules);
+  }
+
+  static start() {
+    return new Validator;
+  }
+
+  compare(input, rules) {
+    rules = rules.constructor === Array ? rules : [rules];
+
+    return rules.map(rule => {
+      let resolvedInput = input;
+
+      //resolve objectified inputs
+      if (_.isObject(resolvedInput)) {
+        rule = rule.split('.');
+        resolvedInput = input[rule[0]];
+        rule.shift();
       }
 
-      return this.definitions;
+      return coreValidate(resolvedInput, rule);
+    });
+  }
+
+  validate(input, rules) {
+    /* @TODO: make a method that does not use every
+     * This way specific rule failures will be evident
+     */
+    const result = _.every(this.compare(input, rules));
+    const invalidKey = `invalid.${rules}`;
+    const validKey = `valid.${rules}`;
+
+    if (result === true && messages.has(validKey)) {
+      return messages.get(validKey);
     }
 
-    static importRules() {
-      this.definitions = new Rules(Validator.userRules);
+    if (result === false && messages.has(invalidKey)) {
+      return messages.get(invalidKey);
     }
 
-    static start() {
-        return new Validator;
-    }
-
-    compare(input, rules) {
-        rules = rules.constructor === Array ? rules : [rules];
-
-        return rules.map(rule => {
-            let resolvedInput = input;
-
-            //resolve objectified inputs
-            if(_.isObject(resolvedInput)) {
-              rule = rule.split('.');
-              resolvedInput = input[rule[0]];
-              rule.shift();
-            }
-
-            return v1Validate(resolvedInput, rule);
-        });
-    }
-
-    validate(input, rules) {
-        /* @TODO: make a method that does not use every
-        * This way specific rule failures will be evident
-        */
-        return _.every(this.compare(input, rules));
-    }
+    return result;
+  }
 }
 
 module.exports = Validator;

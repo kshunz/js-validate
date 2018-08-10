@@ -1,6 +1,6 @@
 {
   "name": "js-validate",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Functional, extensible, input validation. Make sure the value you receive is EXACTLY what you expect.",
   "main": "index.js",
   "scripts": {
@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.10",
-    "uglify-js": "^3.3.9"
+    "uglify-js": "^3.3.9",
+    "yamljs": "^0.3.0"
   }
 }
